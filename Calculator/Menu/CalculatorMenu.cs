@@ -76,19 +76,40 @@ namespace CalculatorMenuNamespace
                     _ => throw new InvalidOperationException("Ogiltig operator.")
                 };
 
-                Console.WriteLine($"Resultat: {result}");
+                // Skapa en Shape om det inte finns en att använda
+                var shape = _dbContext.Shapes.FirstOrDefault();  // Hämtar första Shape, eller null om ingen finns
 
+                if (shape == null)
+                {
+                    // Om ingen Shape finns, skapa en ny
+                    shape = new Shape
+                    {
+                        ShapeType = "Rektangel", // Exempel på form, kan ändras
+                        Area = 20,               // Exempelvärde, ändra efter behov
+                        Perimeter = 40,
+                        CalculatedOn = DateTime.Now
+                    };
+                    _dbContext.Shapes.Add(shape);  // Lägg till Shape till databasen
+                    _dbContext.SaveChanges();  // Spara för att få ett Id för Shape
+                }
+
+                // Skapa och koppla beräkningen till ShapeId
                 var calculation = new Calculation
                 {
                     Operand1 = operand1,
                     Operand2 = operand2,
                     Operator = operatorChoice,
                     Result = result,
-                    PerformedOn = DateTime.Now
+                    PerformedOn = DateTime.Now,
+                    ShapeId = shape.Id  // Koppla beräkningen till ShapeId
                 };
 
-                _dbContext.Calculations.Add(calculation);
-                _dbContext.SaveChanges();
+                _dbContext.Calculations.Add(calculation);  // Lägg till beräkningen
+                _dbContext.SaveChanges();  // Spara beräkningen
+
+                Console.WriteLine($"Resultat: {result}");
+                Console.WriteLine("Beräkningen har sparats.");
+
             }
             catch (FormatException)
             {
@@ -97,9 +118,14 @@ namespace CalculatorMenuNamespace
             catch (Exception ex)
             {
                 Console.WriteLine($"Fel inträffade vid beräkning: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inre undantag: {ex.InnerException.Message}");
+                }
             }
             Console.ReadKey();
         }
+
 
         private void DisplayCalculationHistory()
         {

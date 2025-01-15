@@ -12,8 +12,8 @@ using myClassLibrary2;
 namespace MyClassLibrary2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250115015157_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250115143602_UpdateShapeTypeColumn")]
+    partial class UpdateShapeTypeColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,12 @@ namespace MyClassLibrary2.Migrations
                     b.Property<double>("Result")
                         .HasColumnType("float");
 
+                    b.Property<int>("ShapeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ShapeId");
 
                     b.ToTable("Calculations");
                 });
@@ -61,6 +66,9 @@ namespace MyClassLibrary2.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CalculationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ComputerChoice")
                         .IsRequired()
@@ -77,7 +85,14 @@ namespace MyClassLibrary2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ShapeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CalculationId");
+
+                    b.HasIndex("ShapeId");
 
                     b.ToTable("RockPaperScissorsResults");
                 });
@@ -101,8 +116,8 @@ namespace MyClassLibrary2.Migrations
 
                     b.Property<string>("ShapeType")
                         .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -190,6 +205,44 @@ namespace MyClassLibrary2.Migrations
                         });
 
                     b.HasDiscriminator().HasValue("Triangle");
+                });
+
+            modelBuilder.Entity("MyClassLibrary2.Models.Calculation", b =>
+                {
+                    b.HasOne("MyClassLibrary2.Models.Shape", "Shape")
+                        .WithMany("Calculations")
+                        .HasForeignKey("ShapeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Shape");
+                });
+
+            modelBuilder.Entity("MyClassLibrary2.Models.RockPaperScissors", b =>
+                {
+                    b.HasOne("MyClassLibrary2.Models.Calculation", "Calculation")
+                        .WithMany("RockPaperScissorsGames")
+                        .HasForeignKey("CalculationId");
+
+                    b.HasOne("MyClassLibrary2.Models.Shape", "Shape")
+                        .WithMany("RockPaperScissorsGames")
+                        .HasForeignKey("ShapeId");
+
+                    b.Navigation("Calculation");
+
+                    b.Navigation("Shape");
+                });
+
+            modelBuilder.Entity("MyClassLibrary2.Models.Calculation", b =>
+                {
+                    b.Navigation("RockPaperScissorsGames");
+                });
+
+            modelBuilder.Entity("MyClassLibrary2.Models.Shape", b =>
+                {
+                    b.Navigation("Calculations");
+
+                    b.Navigation("RockPaperScissorsGames");
                 });
 #pragma warning restore 612, 618
         }

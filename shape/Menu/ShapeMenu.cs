@@ -89,8 +89,21 @@ namespace ShapeMenuNamespace
                 {
                     newShape.CalculatedOn = DateTime.Now;
                     _dbContext.Shapes.Add(newShape);
-                    _dbContext.SaveChanges();
-                    Console.WriteLine("Formen har skapats och sparats.");
+
+                    try
+                    {
+                        // Försök att spara ändringar i databasen
+                        _dbContext.SaveChanges();
+                        Console.WriteLine("Formen har skapats och sparats.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Fel vid sparande av ändringar: {ex.Message}");
+                        if (ex.InnerException != null)
+                        {
+                            Console.WriteLine($"Inre undantag: {ex.InnerException.Message}");
+                        }
+                    }
                 }
             }
             catch (Exception ex)

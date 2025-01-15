@@ -82,7 +82,21 @@ namespace RPCMenuNamespace
                 };
 
                 _dbContext.RockPaperScissorsResults.Add(game);
-                _dbContext.SaveChanges();
+
+                try
+                {
+                    // Försök att spara ändringar i databasen
+                    _dbContext.SaveChanges();
+                    Console.WriteLine("Spelet har sparats.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Fel vid sparande av spelet: {ex.Message}");
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine($"Inre undantag: {ex.InnerException.Message}");
+                    }
+                }
             }
             catch (Exception ex)
             {

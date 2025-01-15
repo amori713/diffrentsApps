@@ -14,5 +14,9 @@ namespace MyClassLibrary2.Models
         public string Operator { get; set; }
         public double Result { get; set; }
         public DateTime PerformedOn { get; set; }
+        public int ShapeId { get; set; }
+        public Shape Shape { get; set; }
+
+        public List<RockPaperScissors> RockPaperScissorsGames { get; set; }
     }
 }
