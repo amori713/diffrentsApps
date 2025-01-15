@@ -57,7 +57,7 @@ namespace ShapeMenuNamespace
         {
             Console.Clear();
             Console.WriteLine("Vilken typ av form vill du skapa?");
-            Console.WriteLine("1. Parallellogram");
+            Console.WriteLine("1. Parallelogram");
             Console.WriteLine("2. Romb");
             Console.WriteLine("3. Rektangel");
             Console.WriteLine("4. Triangel");
@@ -92,7 +92,6 @@ namespace ShapeMenuNamespace
 
                     try
                     {
-                        // Försök att spara ändringar i databasen
                         _dbContext.SaveChanges();
                         Console.WriteLine("Formen har skapats och sparats.");
                     }
@@ -126,7 +125,7 @@ namespace ShapeMenuNamespace
 
                 return new Parallelogram
                 {
-                    ShapeType = "Parallellogram",
+                    ShapeType = "Parallelogram",
                     Base = baseLength,
                     Height = height,
                     SideLength = sideLength,
@@ -136,7 +135,7 @@ namespace ShapeMenuNamespace
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Fel inträffade när parallellogrammet skapades: {ex.Message}");
+                Console.WriteLine($"Fel inträffade när parallelogrammet skapades: {ex.Message}");
                 return null;
             }
         }
@@ -152,7 +151,7 @@ namespace ShapeMenuNamespace
 
                 return new Rhombus
                 {
-                    ShapeType = "Romb",
+                    ShapeType = "Rhombus",
                     SideLength = sideLength,
                     Height = height,
                     Area = sideLength * height,
@@ -177,7 +176,7 @@ namespace ShapeMenuNamespace
 
                 return new Rectangle
                 {
-                    ShapeType = "Rektangel",
+                    ShapeType = "Rectangle",
                     Width = width,
                     Height = height,
                     Area = width * height,
@@ -202,11 +201,11 @@ namespace ShapeMenuNamespace
 
                 return new Triangle
                 {
-                    ShapeType = "Triangel",
+                    ShapeType = "Triangle",
                     Base = baseLength,
                     Height = height,
                     Area = (baseLength * height) / 2,
-                    Perimeter = baseLength + 2 * height // Förenklad för illustration
+                    Perimeter = baseLength + 2 * height
                 };
             }
             catch (Exception ex)

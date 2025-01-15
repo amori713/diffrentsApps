@@ -11,9 +11,9 @@ namespace myClassLibrary2
         {
             try
             {
-                // Läs konfiguration från appsettings.json
+                
                 var builder = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory()) // Får rätt sökväg för appsettings.json
+                    .SetBasePath(Directory.GetCurrentDirectory()) 
                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
                 var config = builder.Build();
@@ -26,12 +26,12 @@ namespace myClassLibrary2
 
                 Console.WriteLine("Anslutningssträng laddad korrekt.");
 
-                // Skapa en DbContextOptions instans med rätt anslutningssträng
+                
                 var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                    .UseSqlServer(connectionString)  // SQL Server som databas
+                    .UseSqlServer(connectionString)  
                     .Options;
 
-                // Skapa och returnera ApplicationDbContext med den korrekta anslutningen
+                
                 var dbContext = new ApplicationDbContext(options);
                 Console.WriteLine("DbContext skapad.");
                 return dbContext;
@@ -39,7 +39,7 @@ namespace myClassLibrary2
             catch (Exception ex)
             {
                 Console.WriteLine($"Fel vid skapande av DbContext: {ex.Message}");
-                throw; // Rethrow exception så att den kan fångas i applikationen om det behövs
+                throw; 
             }
         }
     }

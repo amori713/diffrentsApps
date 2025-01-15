@@ -12,13 +12,13 @@ namespace MyClassLibrary2
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            // Hämta anslutningssträngen från appsettings.json
+            
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory()) // Ska vara rotmappen för diffrentsApps
-                .AddJsonFile("appsettings.json") // Säkerställ att appsettings.json finns här
+                .SetBasePath(Directory.GetCurrentDirectory()) 
+                .AddJsonFile("appsettings.json") 
                 .Build();
 
-            // Lägg till debug-logg för att skriva ut den aktuella katalogen
+            
             Console.WriteLine($"Current directory: {Directory.GetCurrentDirectory()}");
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");

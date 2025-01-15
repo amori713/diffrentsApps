@@ -15,7 +15,7 @@ namespace DiffrentsApp
             try
             {
                 App app = new App();
-                app.RunMain(); // Starta huvudflödet via App-klassen
+                app.RunMain(); 
             }
             catch (Exception ex)
             {

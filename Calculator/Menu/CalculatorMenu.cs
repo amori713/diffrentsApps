@@ -76,24 +76,24 @@ namespace CalculatorMenuNamespace
                     _ => throw new InvalidOperationException("Ogiltig operator.")
                 };
 
-                // Skapa en Shape om det inte finns en att använda
-                var shape = _dbContext.Shapes.FirstOrDefault();  // Hämtar första Shape, eller null om ingen finns
+               
+                var shape = _dbContext.Shapes.FirstOrDefault();  
 
                 if (shape == null)
                 {
-                    // Om ingen Shape finns, skapa en ny
+                    
                     shape = new Shape
                     {
-                        ShapeType = "Rektangel", // Exempel på form, kan ändras
-                        Area = 20,               // Exempelvärde, ändra efter behov
+                        ShapeType = "Rektangel", 
+                        Area = 20,               
                         Perimeter = 40,
                         CalculatedOn = DateTime.Now
                     };
-                    _dbContext.Shapes.Add(shape);  // Lägg till Shape till databasen
-                    _dbContext.SaveChanges();  // Spara för att få ett Id för Shape
+                    _dbContext.Shapes.Add(shape);  
+                    _dbContext.SaveChanges();  
                 }
 
-                // Skapa och koppla beräkningen till ShapeId
+                
                 var calculation = new Calculation
                 {
                     Operand1 = operand1,
@@ -101,11 +101,11 @@ namespace CalculatorMenuNamespace
                     Operator = operatorChoice,
                     Result = result,
                     PerformedOn = DateTime.Now,
-                    ShapeId = shape.Id  // Koppla beräkningen till ShapeId
+                    ShapeId = shape.Id  
                 };
 
-                _dbContext.Calculations.Add(calculation);  // Lägg till beräkningen
-                _dbContext.SaveChanges();  // Spara beräkningen
+                _dbContext.Calculations.Add(calculation);  
+                _dbContext.SaveChanges();  
 
                 Console.WriteLine($"Resultat: {result}");
                 Console.WriteLine("Beräkningen har sparats.");

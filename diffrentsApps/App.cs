@@ -16,13 +16,13 @@ namespace DiffrentsApp
             try
             {
                 Build build = new Build();
-                _dbContext = build.BuildDb(); // Skapar DbContext med Build-klassen
+                _dbContext = build.BuildDb(); 
                 Console.WriteLine("DbContext har initialiserats.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Fel vid skapande av DbContext: {ex.Message}");
-                throw; // Detta kommer att stoppa exekvering om det är allvarliga fel
+                throw; 
             }
         }
 

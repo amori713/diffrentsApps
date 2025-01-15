@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyClassLibrary2.Models; // Anpassa namespace efter din struktur
+using MyClassLibrary2.Models; 
 
 namespace myClassLibrary2
 {
@@ -13,8 +13,8 @@ namespace myClassLibrary2
         {
             try
             {
-                // Lägg till eventuell initialiseringslogik här
-                // Exempelvis kan du här initiera något i din databas om det behövs.
+                
+                
                 Console.WriteLine("DbContext initialiserad.");
             }
             catch (Exception ex)
@@ -27,14 +27,14 @@ namespace myClassLibrary2
         {
             try
             {
-                // Shape-discriminator för arv
+                
                 modelBuilder.Entity<Shape>().HasDiscriminator<string>("ShapeType")
                     .HasValue<Rectangle>("Rectangle")
                     .HasValue<Parallelogram>("Parallelogram")
                     .HasValue<Triangle>("Triangle")
                     .HasValue<Rhombus>("Rhombus");
 
-                base.OnModelCreating(modelBuilder); // Kalla basklassens implementation
+                base.OnModelCreating(modelBuilder); 
             }
             catch (Exception ex)
             {

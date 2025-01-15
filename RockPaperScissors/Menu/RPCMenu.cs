@@ -85,7 +85,7 @@ namespace RPCMenuNamespace
 
                 try
                 {
-                    // Försök att spara ändringar i databasen
+                    
                     _dbContext.SaveChanges();
                     Console.WriteLine("Spelet har sparats.");
                 }
