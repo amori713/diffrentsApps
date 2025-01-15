@@ -11,9 +11,9 @@ namespace myClassLibrary2
         {
             try
             {
-                // Läser konfiguration från appsettings.json
+                // Läs konfiguration från appsettings.json
                 var builder = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())  // Får rätt sökväg för appsettings.json
+                    .SetBasePath(Directory.GetCurrentDirectory()) // Får rätt sökväg för appsettings.json
                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
                 var config = builder.Build();
@@ -24,19 +24,22 @@ namespace myClassLibrary2
                     throw new InvalidOperationException("Anslutningssträngen 'DefaultConnection' är inte konfigurerad.");
                 }
 
-                // Skapar en DbContextOptions instans med rätt anslutningssträng
+                Console.WriteLine("Anslutningssträng laddad korrekt.");
+
+                // Skapa en DbContextOptions instans med rätt anslutningssträng
                 var options = new DbContextOptionsBuilder<ApplicationDbContext>()
                     .UseSqlServer(connectionString)  // SQL Server som databas
                     .Options;
 
                 // Skapa och returnera ApplicationDbContext med den korrekta anslutningen
                 var dbContext = new ApplicationDbContext(options);
+                Console.WriteLine("DbContext skapad.");
                 return dbContext;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Fel vid skapande av DbContext: {ex.Message}");
-                throw;
+                throw; // Rethrow exception så att den kan fångas i applikationen om det behövs
             }
         }
     }
