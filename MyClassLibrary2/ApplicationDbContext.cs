@@ -14,65 +14,56 @@ namespace MyClassLibrary2
 
         private readonly IConfiguration _configuration;
 
-        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration)
             : base(options)
         {
-            _configuration = configuration;
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
 
-            try
-            {
-                Console.WriteLine("DbContext initialiserad.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Fel vid instansiering av ApplicationDbContext: {ex.Message}");
-            }
+            Console.WriteLine("DbContext initialiserad.");
         }
 
-        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 var connectionString = _configuration.GetConnectionString("DefaultConnection");
+                if (string.IsNullOrEmpty(connectionString))
+                {
+                    throw new InvalidOperationException("Connection string 'DefaultConnection' saknas eller är tom.");
+                }
 
                 optionsBuilder
                     .UseSqlServer(connectionString)
                     .UseLoggerFactory(LoggerFactory.Create(builder =>
-                        builder.SetMinimumLevel(LogLevel.None)))  
-                    .EnableSensitiveDataLogging(false); 
+                        builder.SetMinimumLevel(LogLevel.Warning)))
+                    .EnableSensitiveDataLogging(false);
             }
         }
 
-
-        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             try
             {
-                
                 modelBuilder.Entity<Shape>().HasDiscriminator<string>("ShapeType")
                     .HasValue<Rectangle>("Rectangle")
                     .HasValue<Parallelogram>("Parallelogram")
                     .HasValue<Triangle>("Triangle")
                     .HasValue<Rhombus>("Rhombus");
 
-                
                 modelBuilder.Entity<Rectangle>().HasData(
-                    new Rectangle { Id = 1, ShapeType = "Rectangle", Width = 5, Height = 10, Area = 50, Perimeter = 30, CalculatedOn = DateTime.Now }
+                    new Rectangle { Id = 1, Width = 5, Height = 10, Area = 50, Perimeter = 30, CalculatedOn = DateTime.Now }
                 );
 
                 modelBuilder.Entity<Parallelogram>().HasData(
-                    new Parallelogram { Id = 2, ShapeType = "Parallelogram", Base = 4, Height = 7, SideLength = 5, Area = 28, Perimeter = 18, CalculatedOn = DateTime.Now }
+                    new Parallelogram { Id = 2, Base = 4, Height = 7, SideLength = 5, Area = 28, Perimeter = 18, CalculatedOn = DateTime.Now }
                 );
 
                 modelBuilder.Entity<Triangle>().HasData(
-                    new Triangle { Id = 3, ShapeType = "Triangle", Base = 3, Height = 6, Area = 9, Perimeter = 12, CalculatedOn = DateTime.Now }
+                    new Triangle { Id = 3, Base = 3, Height = 6, Area = 9, Perimeter = 12, CalculatedOn = DateTime.Now }
                 );
 
                 modelBuilder.Entity<Rhombus>().HasData(
-                    new Rhombus { Id = 4, ShapeType = "Rhombus", SideLength = 6, Height = 8, Area = 48, Perimeter = 24, CalculatedOn = DateTime.Now }
+                    new Rhombus { Id = 4, SideLength = 6, Height = 8, Area = 48, Perimeter = 24, CalculatedOn = DateTime.Now }
                 );
 
                 modelBuilder.Entity<Calculation>().HasData(

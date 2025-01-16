@@ -73,12 +73,22 @@ namespace RPCMenuNamespace
                 Console.WriteLine($"Du valde: {playerChoice}, Datorn valde: {computerChoice}");
                 Console.WriteLine($"Resultat: {result}");
 
+                
+                double winPercentage = result switch
+                {
+                    "Du vann" => 100,
+                    "Oavgjort" => 50,
+                    "Du förlorade" => 0,
+                    _ => 0
+                };
+
                 var game = new MyClassLibrary2.Models.RockPaperScissors
                 {
                     PlayerChoice = playerChoice,
                     ComputerChoice = computerChoice,
                     Result = result,
-                    PlayedOn = DateTime.Now
+                    PlayedOn = DateTime.Now,
+                    WinPercentage = winPercentage  
                 };
 
                 _dbContext.RockPaperScissorsResults.Add(game);
@@ -128,7 +138,7 @@ namespace RPCMenuNamespace
                     Console.WriteLine("Spelhistorik:");
                     foreach (var game in history)
                     {
-                        Console.WriteLine($"{game.PlayedOn}: Du valde {game.PlayerChoice}, Datorn valde {game.ComputerChoice}. Resultat: {game.Result}");
+                        Console.WriteLine($"{game.PlayedOn}: Du valde {game.PlayerChoice}, Datorn valde {game.ComputerChoice}. Resultat: {game.Result}, Vinstprocent: {game.WinPercentage}%");
                     }
                 }
                 else

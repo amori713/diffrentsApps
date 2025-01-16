@@ -62,7 +62,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 10.0,
                             Operand2 = 5.0,
                             Operator = "+",
-                            PerformedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5295),
+                            PerformedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9284),
                             Result = 15.0,
                             ShapeId = 1
                         },
@@ -72,7 +72,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 20.0,
                             Operand2 = 4.0,
                             Operator = "/",
-                            PerformedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5299),
+                            PerformedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9288),
                             Result = 5.0,
                             ShapeId = 2
                         },
@@ -82,7 +82,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 7.0,
                             Operand2 = 3.0,
                             Operator = "-",
-                            PerformedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5302),
+                            PerformedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9291),
                             Result = 4.0,
                             ShapeId = 3
                         });
@@ -117,6 +117,9 @@ namespace MyClassLibrary2.Migrations
                     b.Property<int?>("ShapeId")
                         .HasColumnType("int");
 
+                    b.Property<double>("WinPercentage")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CalculationId");
@@ -131,20 +134,22 @@ namespace MyClassLibrary2.Migrations
                             Id = 1,
                             CalculationId = 1,
                             ComputerChoice = "sax",
-                            PlayedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5326),
+                            PlayedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9315),
                             PlayerChoice = "sten",
                             Result = "Vinst",
-                            ShapeId = 1
+                            ShapeId = 1,
+                            WinPercentage = 0.0
                         },
                         new
                         {
                             Id = 2,
                             CalculationId = 2,
                             ComputerChoice = "sten",
-                            PlayedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5330),
+                            PlayedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9319),
                             PlayerChoice = "påse",
                             Result = "Vinst",
-                            ShapeId = 2
+                            ShapeId = 2,
+                            WinPercentage = 0.0
                         });
                 });
 
@@ -208,9 +213,8 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 2,
                             Area = 28.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5218),
+                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9198),
                             Perimeter = 18.0,
-                            ShapeType = "Parallelogram",
                             Base = 4.0,
                             Height = 7.0,
                             SideLength = 5.0
@@ -240,9 +244,8 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 1,
                             Area = 50.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(4976),
+                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(8972),
                             Perimeter = 30.0,
-                            ShapeType = "Rectangle",
                             Height = 10.0,
                             Width = 5.0
                         });
@@ -265,9 +268,8 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 4,
                             Area = 48.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5268),
+                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9258),
                             Perimeter = 24.0,
-                            ShapeType = "Rhombus",
                             Height = 8.0,
                             SideLength = 6.0
                         });
@@ -299,9 +301,8 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 3,
                             Area = 9.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5243),
+                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9231),
                             Perimeter = 12.0,
-                            ShapeType = "Triangle",
                             Base = 3.0,
                             Height = 6.0
                         });

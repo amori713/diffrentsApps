@@ -1,5 +1,4 @@
-﻿// DiffrentsApp/App.cs
-using CalculatorMenuNamespace;
+﻿using CalculatorMenuNamespace;
 using MyClassLibrary2;
 using RPCMenuNamespace;
 using ShapeMenuNamespace;

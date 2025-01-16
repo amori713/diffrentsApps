@@ -73,7 +73,8 @@ namespace MyClassLibrary2.Migrations
                     Result = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PlayedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShapeId = table.Column<int>(type: "int", nullable: true),
-                    CalculationId = table.Column<int>(type: "int", nullable: true)
+                    CalculationId = table.Column<int>(type: "int", nullable: true),
+                    WinPercentage = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,40 +94,40 @@ namespace MyClassLibrary2.Migrations
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "CalculatedOn", "Rectangle_Height", "Perimeter", "ShapeType", "Width" },
-                values: new object[] { 1, 50.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(5784), 10.0, 30.0, "Rectangle", 5.0 });
+                values: new object[] { 1, 50.0, new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(8972), 10.0, 30.0, "Rectangle", 5.0 });
 
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "Base", "CalculatedOn", "Parallelogram_Height", "Perimeter", "ShapeType", "Parallelogram_SideLength" },
-                values: new object[] { 2, 28.0, 4.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(6763), 7.0, 18.0, "Parallelogram", 5.0 });
+                values: new object[] { 2, 28.0, 4.0, new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9198), 7.0, 18.0, "Parallelogram", 5.0 });
 
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "Triangle_Base", "CalculatedOn", "Triangle_Height", "Perimeter", "ShapeType" },
-                values: new object[] { 3, 9.0, 3.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(6877), 6.0, 12.0, "Triangle" });
+                values: new object[] { 3, 9.0, 3.0, new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9231), 6.0, 12.0, "Triangle" });
 
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "CalculatedOn", "Height", "Perimeter", "ShapeType", "SideLength" },
-                values: new object[] { 4, 48.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(6941), 8.0, 24.0, "Rhombus", 6.0 });
+                values: new object[] { 4, 48.0, new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9258), 8.0, 24.0, "Rhombus", 6.0 });
 
             migrationBuilder.InsertData(
                 table: "Calculations",
                 columns: new[] { "Id", "Operand1", "Operand2", "Operator", "PerformedOn", "Result", "ShapeId" },
                 values: new object[,]
                 {
-                    { 1, 10.0, 5.0, "+", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7106), 15.0, 1 },
-                    { 2, 20.0, 4.0, "/", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7116), 5.0, 2 },
-                    { 3, 7.0, 3.0, "-", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7121), 4.0, 3 }
+                    { 1, 10.0, 5.0, "+", new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9284), 15.0, 1 },
+                    { 2, 20.0, 4.0, "/", new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9288), 5.0, 2 },
+                    { 3, 7.0, 3.0, "-", new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9291), 4.0, 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "RockPaperScissorsResults",
-                columns: new[] { "Id", "CalculationId", "ComputerChoice", "PlayedOn", "PlayerChoice", "Result", "ShapeId" },
+                columns: new[] { "Id", "CalculationId", "ComputerChoice", "PlayedOn", "PlayerChoice", "Result", "ShapeId", "WinPercentage" },
                 values: new object[,]
                 {
-                    { 1, 1, "sax", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7250), "sten", "Vinst", 1 },
-                    { 2, 2, "sten", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7269), "påse", "Vinst", 2 }
+                    { 1, 1, "sax", new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9315), "sten", "Vinst", 1, 0.0 },
+                    { 2, 2, "sten", new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9319), "påse", "Vinst", 2, 0.0 }
                 });
 
             migrationBuilder.CreateIndex(
