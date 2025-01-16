@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyClassLibrary2.Models; 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using MyClassLibrary2.Models;
+using System;
 
-namespace myClassLibrary2
+namespace MyClassLibrary2
 {
     public class ApplicationDbContext : DbContext
     {
@@ -9,12 +12,16 @@ namespace myClassLibrary2
         public DbSet<Calculation> Calculations { get; set; }
         public DbSet<RockPaperScissors> RockPaperScissorsResults { get; set; }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        private readonly IConfiguration _configuration;
+
+        
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration)
+            : base(options)
         {
+            _configuration = configuration;
+
             try
             {
-                
-                
                 Console.WriteLine("DbContext initialiserad.");
             }
             catch (Exception ex)
@@ -23,6 +30,23 @@ namespace myClassLibrary2
             }
         }
 
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connectionString = _configuration.GetConnectionString("DefaultConnection");
+
+                optionsBuilder
+                    .UseSqlServer(connectionString)
+                    .UseLoggerFactory(LoggerFactory.Create(builder =>
+                        builder.SetMinimumLevel(LogLevel.None)))  
+                    .EnableSensitiveDataLogging(false); 
+            }
+        }
+
+
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             try
@@ -39,29 +63,24 @@ namespace myClassLibrary2
                     new Rectangle { Id = 1, ShapeType = "Rectangle", Width = 5, Height = 10, Area = 50, Perimeter = 30, CalculatedOn = DateTime.Now }
                 );
 
-                
                 modelBuilder.Entity<Parallelogram>().HasData(
                     new Parallelogram { Id = 2, ShapeType = "Parallelogram", Base = 4, Height = 7, SideLength = 5, Area = 28, Perimeter = 18, CalculatedOn = DateTime.Now }
                 );
 
-                
                 modelBuilder.Entity<Triangle>().HasData(
                     new Triangle { Id = 3, ShapeType = "Triangle", Base = 3, Height = 6, Area = 9, Perimeter = 12, CalculatedOn = DateTime.Now }
                 );
 
-                
                 modelBuilder.Entity<Rhombus>().HasData(
                     new Rhombus { Id = 4, ShapeType = "Rhombus", SideLength = 6, Height = 8, Area = 48, Perimeter = 24, CalculatedOn = DateTime.Now }
                 );
 
-                
                 modelBuilder.Entity<Calculation>().HasData(
                     new Calculation { Id = 1, Operand1 = 10, Operand2 = 5, Operator = "+", Result = 15, PerformedOn = DateTime.Now, ShapeId = 1 },
                     new Calculation { Id = 2, Operand1 = 20, Operand2 = 4, Operator = "/", Result = 5, PerformedOn = DateTime.Now, ShapeId = 2 },
                     new Calculation { Id = 3, Operand1 = 7, Operand2 = 3, Operator = "-", Result = 4, PerformedOn = DateTime.Now, ShapeId = 3 }
                 );
 
-                
                 modelBuilder.Entity<RockPaperScissors>().HasData(
                     new RockPaperScissors { Id = 1, PlayerChoice = "sten", ComputerChoice = "sax", Result = "Vinst", PlayedOn = DateTime.Now, ShapeId = 1, CalculationId = 1 },
                     new RockPaperScissors { Id = 2, PlayerChoice = "påse", ComputerChoice = "sten", Result = "Vinst", PlayedOn = DateTime.Now, ShapeId = 2, CalculationId = 2 }
@@ -74,13 +93,5 @@ namespace myClassLibrary2
                 Console.WriteLine($"Fel vid konfiguration av modell: {ex.Message}");
             }
         }
-
     }
-
 }
-
-
-
-
-
-

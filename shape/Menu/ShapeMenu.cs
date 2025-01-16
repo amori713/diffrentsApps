@@ -2,7 +2,7 @@
 using System.Linq;
 using MyClassLibrary2.Models;
 using Microsoft.EntityFrameworkCore;
-using myClassLibrary2;
+using MyClassLibrary2;
 
 namespace ShapeMenuNamespace
 {

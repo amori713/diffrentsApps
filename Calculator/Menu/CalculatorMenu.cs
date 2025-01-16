@@ -2,7 +2,7 @@
 using System.Linq;
 using MyClassLibrary2.Models;
 using Microsoft.EntityFrameworkCore;
-using myClassLibrary2;
+using MyClassLibrary2;
 
 namespace CalculatorMenuNamespace
 {
@@ -76,24 +76,21 @@ namespace CalculatorMenuNamespace
                     _ => throw new InvalidOperationException("Ogiltig operator.")
                 };
 
-               
-                var shape = _dbContext.Shapes.FirstOrDefault();  
+                var shape = _dbContext.Shapes.FirstOrDefault();
 
                 if (shape == null)
                 {
-                    
                     shape = new Shape
                     {
-                        ShapeType = "Rektangel", 
-                        Area = 20,               
+                        ShapeType = "Rektangel",
+                        Area = 20,
                         Perimeter = 40,
                         CalculatedOn = DateTime.Now
                     };
-                    _dbContext.Shapes.Add(shape);  
-                    _dbContext.SaveChanges();  
+                    _dbContext.Shapes.Add(shape);
+                    _dbContext.SaveChanges();
                 }
 
-                
                 var calculation = new Calculation
                 {
                     Operand1 = operand1,
@@ -101,15 +98,14 @@ namespace CalculatorMenuNamespace
                     Operator = operatorChoice,
                     Result = result,
                     PerformedOn = DateTime.Now,
-                    ShapeId = shape.Id  
+                    ShapeId = shape.Id
                 };
 
-                _dbContext.Calculations.Add(calculation);  
-                _dbContext.SaveChanges();  
+                _dbContext.Calculations.Add(calculation);
+                _dbContext.SaveChanges();
 
                 Console.WriteLine($"Resultat: {result}");
                 Console.WriteLine("Beräkningen har sparats.");
-
             }
             catch (FormatException)
             {
@@ -125,7 +121,6 @@ namespace CalculatorMenuNamespace
             }
             Console.ReadKey();
         }
-
 
         private void DisplayCalculationHistory()
         {

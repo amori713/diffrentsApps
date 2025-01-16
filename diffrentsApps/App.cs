@@ -1,9 +1,9 @@
-﻿using MyClassLibrary2;
-using ShapeMenuNamespace;
+﻿// DiffrentsApp/App.cs
 using CalculatorMenuNamespace;
+using MyClassLibrary2;
 using RPCMenuNamespace;
+using ShapeMenuNamespace;
 using System;
-using myClassLibrary2;
 
 namespace DiffrentsApp
 {
@@ -11,19 +11,10 @@ namespace DiffrentsApp
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public App()
+        public App(ApplicationDbContext dbContext)
         {
-            try
-            {
-                Build build = new Build();
-                _dbContext = build.BuildDb(); 
-                Console.WriteLine("DbContext har initialiserats.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Fel vid skapande av DbContext: {ex.Message}");
-                throw; 
-            }
+            _dbContext = dbContext;
+            Console.WriteLine("DbContext har initialiserats.");
         }
 
         public void RunMain()
@@ -73,7 +64,3 @@ namespace DiffrentsApp
         }
     }
 }
-            
-        
-    
-

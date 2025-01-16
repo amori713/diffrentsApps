@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using myClassLibrary2;
 using System.IO;
 
 namespace MyClassLibrary2
@@ -14,18 +13,18 @@ namespace MyClassLibrary2
 
             
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory()) 
-                .AddJsonFile("appsettings.json") 
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
                 .Build();
 
             
-            Console.WriteLine($"Current directory: {Directory.GetCurrentDirectory()}");
-
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+            
             optionsBuilder.UseSqlServer(connectionString);
 
-            return new ApplicationDbContext(optionsBuilder.Options);
+            
+            return new ApplicationDbContext(optionsBuilder.Options, configuration);
         }
     }
 }

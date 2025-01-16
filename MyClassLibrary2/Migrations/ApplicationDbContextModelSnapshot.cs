@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using myClassLibrary2;
+using MyClassLibrary2;
 
 #nullable disable
 
@@ -62,7 +62,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 10.0,
                             Operand2 = 5.0,
                             Operator = "+",
-                            PerformedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3381),
+                            PerformedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5295),
                             Result = 15.0,
                             ShapeId = 1
                         },
@@ -72,7 +72,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 20.0,
                             Operand2 = 4.0,
                             Operator = "/",
-                            PerformedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3386),
+                            PerformedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5299),
                             Result = 5.0,
                             ShapeId = 2
                         },
@@ -82,7 +82,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 7.0,
                             Operand2 = 3.0,
                             Operator = "-",
-                            PerformedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3389),
+                            PerformedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5302),
                             Result = 4.0,
                             ShapeId = 3
                         });
@@ -131,7 +131,7 @@ namespace MyClassLibrary2.Migrations
                             Id = 1,
                             CalculationId = 1,
                             ComputerChoice = "sax",
-                            PlayedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3417),
+                            PlayedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5326),
                             PlayerChoice = "sten",
                             Result = "Vinst",
                             ShapeId = 1
@@ -141,7 +141,7 @@ namespace MyClassLibrary2.Migrations
                             Id = 2,
                             CalculationId = 2,
                             ComputerChoice = "sten",
-                            PlayedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3421),
+                            PlayedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5330),
                             PlayerChoice = "påse",
                             Result = "Vinst",
                             ShapeId = 2
@@ -208,7 +208,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 2,
                             Area = 28.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3301),
+                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5218),
                             Perimeter = 18.0,
                             ShapeType = "Parallelogram",
                             Base = 4.0,
@@ -240,7 +240,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 1,
                             Area = 50.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3020),
+                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(4976),
                             Perimeter = 30.0,
                             ShapeType = "Rectangle",
                             Height = 10.0,
@@ -265,7 +265,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 4,
                             Area = 48.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3354),
+                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5268),
                             Perimeter = 24.0,
                             ShapeType = "Rhombus",
                             Height = 8.0,
@@ -299,7 +299,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 3,
                             Area = 9.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3328),
+                            CalculatedOn = new DateTime(2025, 1, 16, 3, 34, 46, 988, DateTimeKind.Local).AddTicks(5243),
                             Perimeter = 12.0,
                             ShapeType = "Triangle",
                             Base = 3.0,

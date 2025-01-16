@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 
-namespace myClassLibrary2
+namespace MyClassLibrary2
 {
     public class Build
     {
@@ -16,7 +16,7 @@ namespace myClassLibrary2
                     .SetBasePath(Directory.GetCurrentDirectory()) 
                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-                var config = builder.Build();
+                var config = builder.Build(); 
                 var connectionString = config.GetConnectionString("DefaultConnection");
 
                 if (string.IsNullOrEmpty(connectionString))
@@ -28,18 +28,18 @@ namespace myClassLibrary2
 
                 
                 var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                    .UseSqlServer(connectionString)  
+                    .UseSqlServer(connectionString) 
                     .Options;
 
                 
-                var dbContext = new ApplicationDbContext(options);
+                var dbContext = new ApplicationDbContext(options, config); 
                 Console.WriteLine("DbContext skapad.");
                 return dbContext;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Fel vid skapande av DbContext: {ex.Message}");
-                throw; 
+                throw;
             }
         }
     }

@@ -3,12 +3,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace MyClassLibrary2.Migrations
 {
-    
+    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
-        
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -17,7 +19,7 @@ namespace MyClassLibrary2.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ShapeType = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    ShapeType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Area = table.Column<double>(type: "float", nullable: false),
                     Perimeter = table.Column<double>(type: "float", nullable: false),
                     CalculatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -88,6 +90,45 @@ namespace MyClassLibrary2.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Shapes",
+                columns: new[] { "Id", "Area", "CalculatedOn", "Rectangle_Height", "Perimeter", "ShapeType", "Width" },
+                values: new object[] { 1, 50.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(5784), 10.0, 30.0, "Rectangle", 5.0 });
+
+            migrationBuilder.InsertData(
+                table: "Shapes",
+                columns: new[] { "Id", "Area", "Base", "CalculatedOn", "Parallelogram_Height", "Perimeter", "ShapeType", "Parallelogram_SideLength" },
+                values: new object[] { 2, 28.0, 4.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(6763), 7.0, 18.0, "Parallelogram", 5.0 });
+
+            migrationBuilder.InsertData(
+                table: "Shapes",
+                columns: new[] { "Id", "Area", "Triangle_Base", "CalculatedOn", "Triangle_Height", "Perimeter", "ShapeType" },
+                values: new object[] { 3, 9.0, 3.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(6877), 6.0, 12.0, "Triangle" });
+
+            migrationBuilder.InsertData(
+                table: "Shapes",
+                columns: new[] { "Id", "Area", "CalculatedOn", "Height", "Perimeter", "ShapeType", "SideLength" },
+                values: new object[] { 4, 48.0, new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(6941), 8.0, 24.0, "Rhombus", 6.0 });
+
+            migrationBuilder.InsertData(
+                table: "Calculations",
+                columns: new[] { "Id", "Operand1", "Operand2", "Operator", "PerformedOn", "Result", "ShapeId" },
+                values: new object[,]
+                {
+                    { 1, 10.0, 5.0, "+", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7106), 15.0, 1 },
+                    { 2, 20.0, 4.0, "/", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7116), 5.0, 2 },
+                    { 3, 7.0, 3.0, "-", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7121), 4.0, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RockPaperScissorsResults",
+                columns: new[] { "Id", "CalculationId", "ComputerChoice", "PlayedOn", "PlayerChoice", "Result", "ShapeId" },
+                values: new object[,]
+                {
+                    { 1, 1, "sax", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7250), "sten", "Vinst", 1 },
+                    { 2, 2, "sten", new DateTime(2025, 1, 16, 3, 33, 0, 926, DateTimeKind.Local).AddTicks(7269), "påse", "Vinst", 2 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Calculations_ShapeId",
                 table: "Calculations",
@@ -104,7 +145,7 @@ namespace MyClassLibrary2.Migrations
                 column: "ShapeId");
         }
 
-        
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
