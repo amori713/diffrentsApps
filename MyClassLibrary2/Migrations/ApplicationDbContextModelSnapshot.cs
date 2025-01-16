@@ -54,6 +54,38 @@ namespace MyClassLibrary2.Migrations
                     b.HasIndex("ShapeId");
 
                     b.ToTable("Calculations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Operand1 = 10.0,
+                            Operand2 = 5.0,
+                            Operator = "+",
+                            PerformedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3381),
+                            Result = 15.0,
+                            ShapeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Operand1 = 20.0,
+                            Operand2 = 4.0,
+                            Operator = "/",
+                            PerformedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3386),
+                            Result = 5.0,
+                            ShapeId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Operand1 = 7.0,
+                            Operand2 = 3.0,
+                            Operator = "-",
+                            PerformedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3389),
+                            Result = 4.0,
+                            ShapeId = 3
+                        });
                 });
 
             modelBuilder.Entity("MyClassLibrary2.Models.RockPaperScissors", b =>
@@ -92,6 +124,28 @@ namespace MyClassLibrary2.Migrations
                     b.HasIndex("ShapeId");
 
                     b.ToTable("RockPaperScissorsResults");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CalculationId = 1,
+                            ComputerChoice = "sax",
+                            PlayedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3417),
+                            PlayerChoice = "sten",
+                            Result = "Vinst",
+                            ShapeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CalculationId = 2,
+                            ComputerChoice = "sten",
+                            PlayedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3421),
+                            PlayerChoice = "påse",
+                            Result = "Vinst",
+                            ShapeId = 2
+                        });
                 });
 
             modelBuilder.Entity("MyClassLibrary2.Models.Shape", b =>
@@ -148,6 +202,19 @@ namespace MyClassLibrary2.Migrations
                         });
 
                     b.HasDiscriminator().HasValue("Parallelogram");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Area = 28.0,
+                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3301),
+                            Perimeter = 18.0,
+                            ShapeType = "Parallelogram",
+                            Base = 4.0,
+                            Height = 7.0,
+                            SideLength = 5.0
+                        });
                 });
 
             modelBuilder.Entity("MyClassLibrary2.Models.Rectangle", b =>
@@ -167,6 +234,18 @@ namespace MyClassLibrary2.Migrations
                         });
 
                     b.HasDiscriminator().HasValue("Rectangle");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Area = 50.0,
+                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3020),
+                            Perimeter = 30.0,
+                            ShapeType = "Rectangle",
+                            Height = 10.0,
+                            Width = 5.0
+                        });
                 });
 
             modelBuilder.Entity("MyClassLibrary2.Models.Rhombus", b =>
@@ -180,6 +259,18 @@ namespace MyClassLibrary2.Migrations
                         .HasColumnType("float");
 
                     b.HasDiscriminator().HasValue("Rhombus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 4,
+                            Area = 48.0,
+                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3354),
+                            Perimeter = 24.0,
+                            ShapeType = "Rhombus",
+                            Height = 8.0,
+                            SideLength = 6.0
+                        });
                 });
 
             modelBuilder.Entity("MyClassLibrary2.Models.Triangle", b =>
@@ -202,6 +293,18 @@ namespace MyClassLibrary2.Migrations
                         });
 
                     b.HasDiscriminator().HasValue("Triangle");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            Area = 9.0,
+                            CalculatedOn = new DateTime(2025, 1, 16, 2, 0, 6, 444, DateTimeKind.Local).AddTicks(3328),
+                            Perimeter = 12.0,
+                            ShapeType = "Triangle",
+                            Base = 3.0,
+                            Height = 6.0
+                        });
                 });
 
             modelBuilder.Entity("MyClassLibrary2.Models.Calculation", b =>
