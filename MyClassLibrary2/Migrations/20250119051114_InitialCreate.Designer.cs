@@ -12,7 +12,7 @@ using MyClassLibrary2;
 namespace MyClassLibrary2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250116093749_InitialCreate")]
+    [Migration("20250119051114_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -65,7 +65,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 10.0,
                             Operand2 = 5.0,
                             Operator = "+",
-                            PerformedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9284),
+                            PerformedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7008),
                             Result = 15.0,
                             ShapeId = 1
                         },
@@ -75,7 +75,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 20.0,
                             Operand2 = 4.0,
                             Operator = "/",
-                            PerformedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9288),
+                            PerformedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7018),
                             Result = 5.0,
                             ShapeId = 2
                         },
@@ -85,7 +85,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 7.0,
                             Operand2 = 3.0,
                             Operator = "-",
-                            PerformedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9291),
+                            PerformedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7026),
                             Result = 4.0,
                             ShapeId = 3
                         });
@@ -137,7 +137,7 @@ namespace MyClassLibrary2.Migrations
                             Id = 1,
                             CalculationId = 1,
                             ComputerChoice = "sax",
-                            PlayedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9315),
+                            PlayedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7100),
                             PlayerChoice = "sten",
                             Result = "Vinst",
                             ShapeId = 1,
@@ -148,7 +148,7 @@ namespace MyClassLibrary2.Migrations
                             Id = 2,
                             CalculationId = 2,
                             ComputerChoice = "sten",
-                            PlayedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9319),
+                            PlayedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7110),
                             PlayerChoice = "påse",
                             Result = "Vinst",
                             ShapeId = 2,
@@ -216,7 +216,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 2,
                             Area = 28.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9198),
+                            CalculatedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6799),
                             Perimeter = 18.0,
                             Base = 4.0,
                             Height = 7.0,
@@ -247,7 +247,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 1,
                             Area = 50.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(8972),
+                            CalculatedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6377),
                             Perimeter = 30.0,
                             Height = 10.0,
                             Width = 5.0
@@ -271,7 +271,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 4,
                             Area = 48.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9258),
+                            CalculatedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6944),
                             Perimeter = 24.0,
                             Height = 8.0,
                             SideLength = 6.0
@@ -304,7 +304,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 3,
                             Area = 9.0,
-                            CalculatedOn = new DateTime(2025, 1, 16, 10, 37, 48, 843, DateTimeKind.Local).AddTicks(9231),
+                            CalculatedOn = new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6880),
                             Perimeter = 12.0,
                             Base = 3.0,
                             Height = 6.0

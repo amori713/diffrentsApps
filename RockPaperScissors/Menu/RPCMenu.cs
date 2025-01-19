@@ -73,14 +73,10 @@ namespace RPCMenuNamespace
                 Console.WriteLine($"Du valde: {playerChoice}, Datorn valde: {computerChoice}");
                 Console.WriteLine($"Resultat: {result}");
 
-                
-                double winPercentage = result switch
-                {
-                    "Du vann" => 100,
-                    "Oavgjort" => 50,
-                    "Du förlorade" => 0,
-                    _ => 0
-                };
+                var totalGames = _dbContext.RockPaperScissorsResults.Count() + 1;  // Inkludera nuvarande spel
+                var totalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
+                if (result == "Du vann") totalWins++;  // Inkludera nuvarande spelets resultat
+                double winPercentage = (totalWins / (double)totalGames) * 100;
 
                 var game = new MyClassLibrary2.Models.RockPaperScissors
                 {
@@ -88,7 +84,7 @@ namespace RPCMenuNamespace
                     ComputerChoice = computerChoice,
                     Result = result,
                     PlayedOn = DateTime.Now,
-                    WinPercentage = winPercentage  
+                    WinPercentage = winPercentage
                 };
 
                 _dbContext.RockPaperScissorsResults.Add(game);
@@ -96,7 +92,7 @@ namespace RPCMenuNamespace
                 try
                 {
                     _dbContext.SaveChanges();
-                    Console.WriteLine("Spelet har sparats.");
+                    Console.WriteLine($"Spelet har sparats. Din vinstprocent är nu: {winPercentage:F2}%.");
                 }
                 catch (Exception ex)
                 {
@@ -138,7 +134,7 @@ namespace RPCMenuNamespace
                     Console.WriteLine("Spelhistorik:");
                     foreach (var game in history)
                     {
-                        Console.WriteLine($"{game.PlayedOn}: Du valde {game.PlayerChoice}, Datorn valde {game.ComputerChoice}. Resultat: {game.Result}, Vinstprocent: {game.WinPercentage}%");
+                        Console.WriteLine($"{game.PlayedOn}: Du valde {game.PlayerChoice}, Datorn valde {game.ComputerChoice}. Resultat: {game.Result}, Vinstprocent: {game.WinPercentage:F2}%");
                     }
                 }
                 else
