@@ -52,7 +52,6 @@ namespace RPCMenuNamespace
                 }
             }
         }
-
         private void PlayGame()
         {
             try
@@ -73,35 +72,28 @@ namespace RPCMenuNamespace
                 Console.WriteLine($"Du valde: {playerChoice}, Datorn valde: {computerChoice}");
                 Console.WriteLine($"Resultat: {result}");
 
-                var totalGames = _dbContext.RockPaperScissorsResults.Count() + 1;  // Inkludera nuvarande spel
-                var totalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
-                if (result == "Du vann") totalWins++;  // Inkludera nuvarande spelets resultat
-                double winPercentage = (totalWins / (double)totalGames) * 100;
-
                 var game = new MyClassLibrary2.Models.RockPaperScissors
                 {
                     PlayerChoice = playerChoice,
                     ComputerChoice = computerChoice,
                     Result = result,
-                    PlayedOn = DateTime.Now,
-                    WinPercentage = winPercentage
+                    PlayedOn = DateTime.Now
                 };
 
                 _dbContext.RockPaperScissorsResults.Add(game);
+                _dbContext.SaveChanges(); 
 
-                try
-                {
-                    _dbContext.SaveChanges();
-                    Console.WriteLine($"Spelet har sparats. Din vinstprocent är nu: {winPercentage:F2}%.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Fel vid sparande av spelet: {ex.Message}");
-                    if (ex.InnerException != null)
-                    {
-                        Console.WriteLine($"Inre undantag: {ex.InnerException.Message}");
-                    }
-                }
+                
+                var totalGames = _dbContext.RockPaperScissorsResults.Count();
+                var totalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
+
+                double winPercentage = totalGames > 0 ? (totalWins / (double)totalGames) * 100 : 0;
+                game.WinPercentage = winPercentage; 
+
+                _dbContext.RockPaperScissorsResults.Update(game);
+                _dbContext.SaveChanges(); 
+
+                Console.WriteLine($"Spelet har sparats. Din vinstprocent är nu: {winPercentage:F2}%.");
             }
             catch (Exception ex)
             {
