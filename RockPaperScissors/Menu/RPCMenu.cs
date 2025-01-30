@@ -82,13 +82,22 @@ namespace RPCMenuNamespace
                 };
 
                 _dbContext.RockPaperScissorsResults.Add(game);
-                _dbContext.SaveChanges();
+                _dbContext.SaveChanges(); 
 
-
-                var totalGames = _dbContext.RockPaperScissorsResults.Count() + 1;
+                
+                var totalGames = _dbContext.RockPaperScissorsResults.Count();
                 var totalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
 
-                double winPercentage = totalGames > 0 ? (totalWins / (double)totalGames) * 100 : 0;
+               
+                double winPercentage = 0;
+                if (totalGames == 1) 
+                {
+                    winPercentage = game.Result == "Du vann" ? 100 : 0;
+                }
+                else 
+                {
+                    winPercentage = (totalWins / (double)totalGames) * 100;
+                }
 
                 
                 game.WinPercentage = winPercentage;
@@ -103,6 +112,7 @@ namespace RPCMenuNamespace
             }
             Console.ReadKey();
         }
+
 
 
         private string GetResult(string playerChoice, string computerChoice)
