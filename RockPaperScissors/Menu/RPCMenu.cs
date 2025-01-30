@@ -72,6 +72,7 @@ namespace RPCMenuNamespace
                 Console.WriteLine($"Du valde: {playerChoice}, Datorn valde: {computerChoice}");
                 Console.WriteLine($"Resultat: {result}");
 
+                
                 var game = new MyClassLibrary2.Models.RockPaperScissors
                 {
                     PlayerChoice = playerChoice,
@@ -81,15 +82,16 @@ namespace RPCMenuNamespace
                 };
 
                 _dbContext.RockPaperScissorsResults.Add(game);
-                _dbContext.SaveChanges(); 
+                _dbContext.SaveChanges();
 
                 
                 var totalGames = _dbContext.RockPaperScissorsResults.Count();
                 var totalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
 
                 double winPercentage = totalGames > 0 ? (totalWins / (double)totalGames) * 100 : 0;
-                game.WinPercentage = winPercentage; 
 
+                
+                game.WinPercentage = winPercentage;
                 _dbContext.RockPaperScissorsResults.Update(game);
                 _dbContext.SaveChanges(); 
 
@@ -101,6 +103,7 @@ namespace RPCMenuNamespace
             }
             Console.ReadKey();
         }
+
 
         private string GetResult(string playerChoice, string computerChoice)
         {
