@@ -88,16 +88,8 @@ namespace RPCMenuNamespace
                 var totalGames = _dbContext.RockPaperScissorsResults.Count();
                 var totalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
 
-               
-                double winPercentage = 0;
-                if (totalGames == 1) 
-                {
-                    winPercentage = game.Result == "Du vann" ? 100 : 0;
-                }
-                else 
-                {
-                    winPercentage = (totalWins / (double)totalGames) * 100;
-                }
+                
+                double winPercentage = (totalGames > 0) ? (totalWins / (double)totalGames) * 100 : 0;
 
                 
                 game.WinPercentage = winPercentage;
@@ -112,6 +104,7 @@ namespace RPCMenuNamespace
             }
             Console.ReadKey();
         }
+
 
 
 
