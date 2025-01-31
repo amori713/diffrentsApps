@@ -73,6 +73,10 @@ namespace RPCMenuNamespace
                 Console.WriteLine($"Resultat: {result}");
 
                 
+                int previousTotalGames = _dbContext.RockPaperScissorsResults.Count();
+                int previousTotalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
+
+                
                 var game = new MyClassLibrary2.Models.RockPaperScissors
                 {
                     PlayerChoice = playerChoice,
@@ -85,8 +89,8 @@ namespace RPCMenuNamespace
                 _dbContext.SaveChanges(); 
 
                 
-                var totalGames = _dbContext.RockPaperScissorsResults.Count();
-                var totalWins = _dbContext.RockPaperScissorsResults.Count(g => g.Result == "Du vann");
+                int totalGames = previousTotalGames + 1; 
+                int totalWins = previousTotalWins + (result == "Du vann" ? 1 : 0); 
 
                 
                 double winPercentage = (totalGames > 0) ? (totalWins / (double)totalGames) * 100 : 0;
@@ -94,7 +98,7 @@ namespace RPCMenuNamespace
                 
                 game.WinPercentage = winPercentage;
                 _dbContext.RockPaperScissorsResults.Update(game);
-                _dbContext.SaveChanges(); 
+                _dbContext.SaveChanges();
 
                 Console.WriteLine($"Spelet har sparats. Din vinstprocent är nu: {winPercentage:F2}%.");
             }

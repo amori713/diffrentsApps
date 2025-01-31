@@ -62,7 +62,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 10.0,
                             Operand2 = 5.0,
                             Operator = "+",
-                            PerformedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7666),
+                            PerformedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1838),
                             Result = 15.0,
                             ShapeId = 1
                         },
@@ -72,7 +72,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 20.0,
                             Operand2 = 4.0,
                             Operator = "/",
-                            PerformedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7669),
+                            PerformedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1842),
                             Result = 5.0,
                             ShapeId = 2
                         },
@@ -82,7 +82,7 @@ namespace MyClassLibrary2.Migrations
                             Operand1 = 7.0,
                             Operand2 = 3.0,
                             Operator = "-",
-                            PerformedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7672),
+                            PerformedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1845),
                             Result = 4.0,
                             ShapeId = 3
                         });
@@ -134,7 +134,7 @@ namespace MyClassLibrary2.Migrations
                             Id = 1,
                             CalculationId = 1,
                             ComputerChoice = "sax",
-                            PlayedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7767),
+                            PlayedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(2011),
                             PlayerChoice = "sten",
                             Result = "Vinst",
                             ShapeId = 1,
@@ -145,7 +145,7 @@ namespace MyClassLibrary2.Migrations
                             Id = 2,
                             CalculationId = 2,
                             ComputerChoice = "sten",
-                            PlayedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7773),
+                            PlayedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(2016),
                             PlayerChoice = "påse",
                             Result = "Vinst",
                             ShapeId = 2,
@@ -213,7 +213,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 2,
                             Area = 28.0,
-                            CalculatedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7589),
+                            CalculatedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1729),
                             Perimeter = 18.0,
                             Base = 4.0,
                             Height = 7.0,
@@ -244,7 +244,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 1,
                             Area = 50.0,
-                            CalculatedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7384),
+                            CalculatedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1348),
                             Perimeter = 30.0,
                             Height = 10.0,
                             Width = 5.0
@@ -268,7 +268,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 4,
                             Area = 48.0,
-                            CalculatedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7640),
+                            CalculatedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1810),
                             Perimeter = 24.0,
                             Height = 8.0,
                             SideLength = 6.0
@@ -301,7 +301,7 @@ namespace MyClassLibrary2.Migrations
                         {
                             Id = 3,
                             Area = 9.0,
-                            CalculatedOn = new DateTime(2025, 1, 31, 0, 3, 48, 439, DateTimeKind.Local).AddTicks(7615),
+                            CalculatedOn = new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1759),
                             Perimeter = 12.0,
                             Base = 3.0,
                             Height = 6.0

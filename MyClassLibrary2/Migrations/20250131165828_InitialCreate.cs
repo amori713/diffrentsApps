@@ -94,31 +94,31 @@ namespace MyClassLibrary2.Migrations
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "CalculatedOn", "Rectangle_Height", "Perimeter", "ShapeType", "Width" },
-                values: new object[] { 1, 50.0, new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6377), 10.0, 30.0, "Rectangle", 5.0 });
+                values: new object[] { 1, 50.0, new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1348), 10.0, 30.0, "Rectangle", 5.0 });
 
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "Base", "CalculatedOn", "Parallelogram_Height", "Perimeter", "ShapeType", "Parallelogram_SideLength" },
-                values: new object[] { 2, 28.0, 4.0, new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6799), 7.0, 18.0, "Parallelogram", 5.0 });
+                values: new object[] { 2, 28.0, 4.0, new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1729), 7.0, 18.0, "Parallelogram", 5.0 });
 
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "Triangle_Base", "CalculatedOn", "Triangle_Height", "Perimeter", "ShapeType" },
-                values: new object[] { 3, 9.0, 3.0, new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6880), 6.0, 12.0, "Triangle" });
+                values: new object[] { 3, 9.0, 3.0, new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1759), 6.0, 12.0, "Triangle" });
 
             migrationBuilder.InsertData(
                 table: "Shapes",
                 columns: new[] { "Id", "Area", "CalculatedOn", "Height", "Perimeter", "ShapeType", "SideLength" },
-                values: new object[] { 4, 48.0, new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(6944), 8.0, 24.0, "Rhombus", 6.0 });
+                values: new object[] { 4, 48.0, new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1810), 8.0, 24.0, "Rhombus", 6.0 });
 
             migrationBuilder.InsertData(
                 table: "Calculations",
                 columns: new[] { "Id", "Operand1", "Operand2", "Operator", "PerformedOn", "Result", "ShapeId" },
                 values: new object[,]
                 {
-                    { 1, 10.0, 5.0, "+", new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7008), 15.0, 1 },
-                    { 2, 20.0, 4.0, "/", new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7018), 5.0, 2 },
-                    { 3, 7.0, 3.0, "-", new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7026), 4.0, 3 }
+                    { 1, 10.0, 5.0, "+", new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1838), 15.0, 1 },
+                    { 2, 20.0, 4.0, "/", new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1842), 5.0, 2 },
+                    { 3, 7.0, 3.0, "-", new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(1845), 4.0, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -126,8 +126,8 @@ namespace MyClassLibrary2.Migrations
                 columns: new[] { "Id", "CalculationId", "ComputerChoice", "PlayedOn", "PlayerChoice", "Result", "ShapeId", "WinPercentage" },
                 values: new object[,]
                 {
-                    { 1, 1, "sax", new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7100), "sten", "Vinst", 1, 0.0 },
-                    { 2, 2, "sten", new DateTime(2025, 1, 19, 6, 11, 13, 361, DateTimeKind.Local).AddTicks(7110), "påse", "Vinst", 2, 0.0 }
+                    { 1, 1, "sax", new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(2011), "sten", "Vinst", 1, 0.0 },
+                    { 2, 2, "sten", new DateTime(2025, 1, 31, 17, 58, 28, 458, DateTimeKind.Local).AddTicks(2016), "påse", "Vinst", 2, 0.0 }
                 });
 
             migrationBuilder.CreateIndex(
